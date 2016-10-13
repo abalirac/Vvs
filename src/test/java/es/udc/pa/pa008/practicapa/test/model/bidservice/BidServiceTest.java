@@ -239,7 +239,7 @@ public class BidServiceTest {
 		
 		assertEquals(product.getWinner().getUserProfileId(),userProfile.getUserProfileId());
 	}
-	
+	/*
 	@Test
 	public void testMakeBidMinValue() throws DuplicateInstanceException, InstanceNotFoundException, TimeExpiredException{
 		
@@ -272,4 +272,5 @@ public class BidServiceTest {
 		assertEquals(Double.doubleToLongBits(product.getAuctionValue()), Double.doubleToLongBits(15));
 
 	}
+	*/
 }
