@@ -1,0 +1,21 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter"
+	t:type="Layout" t:title="title">
+    
+    <head>
+	<meta charset="utf-8" />
+	<title>${message:Correción iteración 3}</title>
+	</head>
+    
+    <t:if test="cargado">
+    	<div class="alert alert-success text-center" role="alert">
+			<h4>${message:exito}</h4>
+		</div>
+    	 
+    	<p:else>
+			<div class="alert alert-warning text-center" role="alert">
+				<h4>${message:repetido}</h4>
+			</div>
+		</p:else>
+    </t:if>
+    
+</html>    
