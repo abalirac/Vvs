@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: es.udc.pa.pa008.pruebasinterfaz.pruebasinterfaz.AutenticacionTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.552 sec
