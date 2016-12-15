@@ -1,0 +1,16 @@
+PRUEBAS UNITARIAS USERSERVICE
+---------------------
+
+
+PR-UN-01:
+
+*Unidad: UserService
+*Función/método: RegisterUser y FindUserProfile
+*Motivación: comprobación de que el usuario se crea correctamente y de que se encuentre una vez creado.
+*Entradas:
+	-
+*Salida esperada: 
+	-
+*Inicialización del contexto: 
+	-
+
