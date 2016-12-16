@@ -69,8 +69,8 @@ public class InsertAd {
 		List<Category> categorys = categoryService.findCategorys();
 		String result = "";
 		for (Category category:categorys){
-			result += category.getCategoryId() + "=" + 
-					category.getCategoryName() + ",";
+			result += category.getCategoryId() + "=" 
+					+ category.getCategoryName() + ",";
 		}
 		return result;
 	}

@@ -12,10 +12,10 @@ public class CookiesManager {
 	public static void leaveCookies(Cookies cookies, String loginName,
 			String encryptedPassword) {
 		
-		cookies.getBuilder(LOGIN_NAME_COOKIE, loginName).
-			setMaxAge(REMEMBER_MY_PASSWORD_AGE).write();
-		cookies.getBuilder(ENCRYPTED_PASSWORD_COOKIE, encryptedPassword).
-			setMaxAge(REMEMBER_MY_PASSWORD_AGE).write();
+		cookies.getBuilder(LOGIN_NAME_COOKIE, loginName)
+			.setMaxAge(REMEMBER_MY_PASSWORD_AGE).write();
+		cookies.getBuilder(ENCRYPTED_PASSWORD_COOKIE, encryptedPassword)
+			.setMaxAge(REMEMBER_MY_PASSWORD_AGE).write();
 
 	}
 

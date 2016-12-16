@@ -34,10 +34,10 @@ public class ProductDaoHibernate extends GenericDaoHibernate<Product, Long> impl
 			
 		}
 		
-		query = getSession().createQuery(condition).
-				setFirstResult(startIndex).
-				setMaxResults(count).
-				setReadOnly(true);
+		query = getSession().createQuery(condition)
+				.setFirstResult(startIndex)
+				.setMaxResults(count)
+				.setReadOnly(true);
 
 		if (categoryName != null) {
 			
@@ -59,11 +59,11 @@ public class ProductDaoHibernate extends GenericDaoHibernate<Product, Long> impl
 		
 		return getSession().createQuery(
 				"SELECT u FROM Product u WHERE u.userProfile.userProfileId = :userProfileId"
-				+ " ORDER BY u.endDate DESC").
-    			setParameter("userProfileId", userProfileId).
-    			setFirstResult(startIndex).
-    			setMaxResults(count).
-    			list();
+				+ " ORDER BY u.endDate DESC")
+    			.setParameter("userProfileId", userProfileId)
+    			.setFirstResult(startIndex)
+    			.setMaxResults(count)
+    			.list();
 	}
 	
 }

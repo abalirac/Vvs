@@ -39,7 +39,7 @@ public class BidServiceImpl implements BidService{
 		UserProfile userProfile  = userProfileDao.find(userProfileId);	
 		Product product  = productDao.find(productId);
 		
-		if(product.getEndDate().after(Calendar.getInstance())){
+		if (product.getEndDate().after(Calendar.getInstance())){
 			try {	
 				
 	    		Bid lastBid = bidDao.findLastByProductId(productId);
@@ -51,13 +51,13 @@ public class BidServiceImpl implements BidService{
 	    			
 	    		} else winnerBidValue = lastBid.getBidValue();
 	    		
-	    		if(userProfile == product.getWinner() && amountI <= winnerBidValue)
+	    		if (userProfile == product.getWinner() && amountI <= winnerBidValue)
 	    			
 	    			throw new LowBidValueException(amountI);
 	    		
 	    		else{
 	    			
-		    		if(amountI > winnerBidValue){
+		    		if (amountI > winnerBidValue){
 		    			
 		    			Bid bid = new Bid(userProfile, product, amountI, Calendar.getInstance(),autoIncrement(winnerBidValue),userProfile);
 		    			product.setAuctionValue(autoIncrement(winnerBidValue));
@@ -66,9 +66,9 @@ public class BidServiceImpl implements BidService{
 		    			bidDao.save(bid);
 			    		return bid;
 			    		
-		    		}else if(amountI > product.getAuctionValue() && amountI <= winnerBidValue){
+		    		}else if (amountI > product.getAuctionValue() && amountI <= winnerBidValue){
 		    			
-		    			if(amountI == winnerBidValue) {
+		    			if (amountI == winnerBidValue) {
 		    				
 			    			Bid bid = new Bid(userProfile, product, amountI, Calendar.getInstance(), amountI, product.getWinner());
 			    			product.setAuctionValue(amountI);

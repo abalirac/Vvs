@@ -13,8 +13,8 @@ public class CategoryDaoHibernate extends GenericDaoHibernate<Category, Long> im
 	public List<Category> findCategorys() {
 		
 		return getSession().createQuery(
-				"SELECT u FROM Category u").
-    			list();
+				"SELECT u FROM Category u")
+				.list();
 	}
-	
+
 }

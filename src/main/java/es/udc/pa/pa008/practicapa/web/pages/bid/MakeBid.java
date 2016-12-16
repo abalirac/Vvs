@@ -58,7 +58,7 @@ public class MakeBid {
 
 			this.product = productService.findProduct(productId);
 			
-			try{
+			try {
 				bidService.findProductLastBid(productId);
 				this.minValue = product.getAuctionValue() + 0.5; //+ 0.5 para puja minima
 				
@@ -81,7 +81,7 @@ public class MakeBid {
 			return;
 		}
 
-		try{
+		try {
 			
 			bidService.makeBid(userSession.getUserProfileId(), this.product.getProductId(), bidValue);
 			

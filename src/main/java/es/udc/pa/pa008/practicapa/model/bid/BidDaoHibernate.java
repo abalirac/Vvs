@@ -13,11 +13,11 @@ public class BidDaoHibernate extends GenericDaoHibernate<Bid, Long> implements B
 	@SuppressWarnings("unchecked")
 	public List<Bid> findAllByUserId(Long userId, int startIndex, int count) {
 		return  getSession().createQuery(
-				"SELECT u FROM Bid u WHERE u.userProfile.userProfileId = :userId ORDER BY u.date DESC").
-				setParameter("userId", userId).
-				setFirstResult(startIndex).
-				setMaxResults(count).
-				list();
+				"SELECT u FROM Bid u WHERE u.userProfile.userProfileId = :userId ORDER BY u.date DESC")
+				.setParameter("userId", userId)
+				.setFirstResult(startIndex)
+				.setMaxResults(count)
+				.list();
 	}
 
 	public Bid findLastByProductId(Long productId) throws InstanceNotFoundException {
