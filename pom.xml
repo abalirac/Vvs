@@ -188,6 +188,12 @@
             <artifactId>pojo-modelutil</artifactId>
             <version>${pojo-modelutil.version}</version>
         </dependency>
+		<dependency>
+			<groupId>net.java.quickcheck</groupId>
+			<artifactId>quickcheck</artifactId>
+			<version>0.6</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
     <build>
