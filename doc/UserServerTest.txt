@@ -1,0 +1,131 @@
+PRUEBAS UNITARIAS USERSERVICE
+---------------------
+
+
+PR-UN-01:
+
+*Unidad: UserService
+*Función/método: RegisterUser y FindUserProfile
+*Motivación: Comprobación de que el usuario se crea correctamente y de que se encuentre una vez creado.
+*Entradas: Un usuario
+*Salida esperada: El usuario creado en RegisterUser es el mismo que encontramos buscándolo con FindProfile. 
+	-
+*Inicialización del contexto: Se da de alta a un usuario en la base de datos, para posteriormente buscarlo en la base de datos.
+
+
+PR-UN-02:
+
+*Unidad: UserService
+*Función/método: registerUser
+*Motivación: Asegurarnos de que no se permiten registrar usuarios duplicados.
+*Entradas: Un usuario se intenta registrar dos veces.
+*Salida esperada: Al intentar registrar por segunda vez al usuario, se espera que salte una excepción indicativa de que ese usuario ya está registrado.
+	-
+*Inicialización del contexto: 
+
+PR-UN-03:
+
+*Unidad: UserService
+*Función/método: login
+*Motivación: Comprobar que la contraseña funciona bien independientemente de la cifrada.
+*Entradas: un usurio.
+*Salida esperada: El perfil del usuario coincide con el devuelto por login.
+	-
+*Inicialización del contexto: Sólo se contempla el atributo password.
+
+PR-UN-04:
+
+*Unidad: UserService
+*Función/método: login
+*Motivación: Comprobar que la contraseña cifrada funciona independientemente de la contraseña.
+*Entradas: Un usuario.
+*Salida esperada: El perfil del usuario coincide con el devuelto por login.
+	-
+*Inicialización del contexto: Sólo se contempla el atributo passwordIsEncypted.
+
+
+PR-UN-05:
+
+*Unidad: UserService
+*Función/método: login
+*Motivación: Comprobar que no se puede acceder al perfil de un usuario introduciendo una password erronea.
+*Entradas: Un usuario. 
+*Salida esperada: Salta la excepción de IncorrectPasswordException.
+	-
+*Inicialización del contexto:
+
+
+PR-UN-06:
+
+*Unidad: UserService
+*Función/método: login 
+*Motivación: Informar de que operación no es correcta, no existe ninguna coincidencia con ese login.
+*Entradas: Un usuario.
+*Salida esperada: Salta la excepción de InstanceNotFoundExcepcion.
+	-
+*Inicialización del contexto: No hay ningún usuario en la base de datos.
+
+
+PR-UN-07:
+
+*Unidad: UserService
+*Función/método: findUserProfile
+*Motivación: Comprobar una búsqueda de un perfil erronea.
+*Entradas: perfil erroneo.
+*Salida esperada: Excepcion InstanceNotFoundException.
+	-
+*Inicialización del contexto: No hay ningún usuario en la base de datos.
+
+
+PR-UN-08:
+
+*Unidad: UserService
+*Función/método: updateUSerProfileDetails
+*Motivación: Comprobar que se puede actualizar un perfil de usuario.
+*Entradas: un nuevo perfil.
+*Salida esperada: Los valores del perfil en la base de datos son los que se han cambiado.
+	-
+*Inicialización del contexto:
+
+PR-UN-09:
+
+*Unidad: UserService
+*Función/método: upDateUserProfileDetails 
+*Motivación: Informar que no se pueden hacer actualizaciones de perfiles inexistentes.
+*Entradas: usuario inexistente y un perfil
+*Salida esperada: excepción InstanceNotFoundException 
+	-
+*Inicialización del contexto: No existen usuarios en la base de datos.
+
+
+PR-UN-10:
+
+*Unidad: UserService
+*Función/método: changePassword
+*Motivación: Comprobar que se cambia la contraseña.
+*Entradas: usuario,nueva contraseña contraseña.
+*Salida esperada: usuario con nueva contraseña.
+	-
+*Inicialización del contexto: Existe el usiario
+
+
+PR-UN-11:
+
+*Unidad: UserService
+*Función/método: changePassword
+*Motivación: Comprobar que no se cambie la contraseña a una incorrecta.
+*Entradas: usuario y contraseña nueva.
+*Salida esperada: excepción IncorrectPasswordException
+	-
+*Inicialización del contexto:
+
+
+PR-UN-12:
+
+*Unidad: UserService
+*Función/método: changePassword
+*Motivación: Controlar que no se puede cambiar la contraseña de un usuario que no existe.
+*Entradas: contraseña.
+*Salida esperada: excepción InstanceNotFoundException
+	-
+*Inicialización del contexto: no hay usuarios.
