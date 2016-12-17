@@ -1,0 +1,117 @@
+PRUEBAS UNITARIAS BIDSERVICE
+--------------------------------
+
+
+PR-UN-21:
+
+*Unidad: Bidservice
+*Función/método: makeBid
+*Motivación: Comprobar que makebid crea una oferta dada.
+*Entradas: un usuario, una categoría , una oferta
+*Salida esperada: La oferta que buscamos es la misma que la oferta creada. 
+	-
+*Inicialización del contexto: Inicialmente la base de datos está vacía. Creamos una oferta apartir de un usuario y una categoría, la introducimos en la base de datos con makebid
+				después buscamos esa oferta y miramos si concuerdan las dos.
+
+
+
+PR-UN-22:
+
+*Unidad: Bidservice
+*Función/método: makeBid
+*Motivación: Controlar que las ofertas no sean menores que la oferta inicial.
+*Entradas:  Un producto y una oferta con un valor inferior que el que tiene inicialmente el producto
+*Salida esperada: LowBidValueException. 
+	-
+*Inicialización del contexto: Inicialmente la base de datos esta vacía.
+
+
+
+PR-UN-23:
+
+*Unidad: Bidservice
+*Función/método: makeBid
+*Motivación: Comprobar que funciona el sistema de pujas. Se hacen dos ofertas(pujas) con valores incrementales
+*Entradas: Un producto y dos pujas.
+*Salida esperada: La oferta(puja) ganadora , la de mayor importe. 
+	-
+*Inicialización del contexto: Inicialmente la base de datos está vacía.
+
+
+
+PR-UN-24:
+
+*Unidad: Bidservice
+*Función/método: makeBid
+*Motivación: Comprobar que se toma la oferta ganadora la más alta aunque no sea la última oferta.
+*Entradas: Un producto y dos pujas.
+*Salida esperada: La oferta(puja) ganadora es la de mayo importe. 
+	-
+*Inicialización del contexto: Inicialmente la base de datos está vacía.
+
+
+
+
+PR-UN-25:
+
+*Unidad: Bidservice
+*Función/método: makeBid
+*Motivación: Comprobar que un mismo producto no puede estar en dos subastas.
+*Entradas: Un producto y dos subastas
+*Salida esperada: excepción LowBidValueException. 
+	-
+*Inicialización del contexto: Inicialmente la base de datos está vacía.
+
+
+
+PR-UN-26:
+
+*Unidad: Bidservice
+*Función/método: 
+*Motivación: Controlar las búsquedas de ofertas inexistentes.
+*Entradas: 
+*Salida esperada: Excepción InstanceNotFoundException. 
+	-
+*Inicialización del contexto: Inicialmente la base de datos está vacía.
+
+
+
+
+PR-UN-27:
+
+*Unidad: Bidservice
+*Función/método: makeBid
+*Motivación: Controlar las ofertas efectuadas después de acabar el tiempo de la subasta.
+*Entradas: Un producto y una oferta.
+*Salida esperada: Excepción TimeExpiredException. 
+	-
+*Inicialización del contexto: Inicialmente la base de datos está vacía.
+
+
+
+
+PR-UN-28:
+
+*Unidad: Bidservice
+*Función/método: findBidByUser
+*Motivación: Comprobar que funciona la búsqueda de ofertas que hizo un usuario.
+*Entradas: un Usuario, una categoria, un producto y dos ofertas del usuario al mismo producto.
+*Salida esperada: Todas las ofertas efectuadas por el mismo usuario. 
+	-
+*Inicialización del contexto:  Inicialmente la base de datos está vacía.
+
+
+
+
+PR-UN-29:
+
+*Unidad: Bidservice
+*Función/método: makeBid
+*Motivación: Comprobar que funciona las apuestas automáticas.
+*Entradas: 
+*Salida esperada: . 
+	-
+*Inicialización del contexto:Inicialmente la base de datos está vacía. Las apuestas automáticas funcionan cuando se da un valor 
+				superior a la apuesta vigente, lo suficientemente alta como para que en la oferta reflejada salga
+				que la subió el mínimo a la que estaba pero cuando alguien la intente mejorar, automáticamente se
+pujará hasta el valor máximo introducido.
