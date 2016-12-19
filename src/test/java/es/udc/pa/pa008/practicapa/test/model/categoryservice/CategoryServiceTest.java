@@ -2,7 +2,9 @@ package es.udc.pa.pa008.practicapa.test.model.categoryservice;
 
 import static es.udc.pa.pa008.practicapa.model.util.GlobalNames.SPRING_CONFIG_FILE;
 import static es.udc.pa.pa008.practicapa.test.util.GlobalNames.SPRING_CONFIG_TEST_FILE;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
+import static net.java.quickcheck.generator.PrimitiveGeneratorsIterables.someIntegers;
+import static net.java.quickcheck.generator.PrimitiveGenerators.strings;
 
 import java.util.List;
 
@@ -12,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import static org.testng.Assert.assertEquals;
+
 
 import es.udc.pa.pa008.practicapa.model.category.Category;
 import es.udc.pa.pa008.practicapa.model.category.CategoryDao;
@@ -46,5 +50,22 @@ public class CategoryServiceTest {
 		assertEquals(category3, categorys.get(1));
 		assertEquals(category, categorys.get(2));
 	}
+	
+    @Test
+    public void testFindCategoriesQuickCheck() {
+    	int index=0;
+        for (Integer any : someIntegers()) {
+        	
+    		Category category = new Category(strings().next());
+    		categoryDao.save(category);
+    		
+    		List<Category> categorys = categoryDao.findCategorys();
+        	//System.out.println("any: "+any.intValue()+" size: "+categorys.size()+"nombre1: "+category.getCategoryName()+" nombre2:"+categorys.get(index).getCategoryName());
+    		assertEquals(index+1, categorys.size());
+    		index++;
+    		
+        }
+
+    }
 
 }

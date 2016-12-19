@@ -194,6 +194,22 @@
 			<version>0.6</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8</version>
+		</dependency>
+		<dependency>
+		   <groupId>org.graphwalker</groupId>
+		   <artifactId>graphwalker-core</artifactId>
+		   <version>3.4.2</version>
+		</dependency>
+			<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.46.0</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -429,7 +445,11 @@
                     </dependency>
                 </dependencies>
             </plugin>
-
+			<plugin>
+				<groupId>org.graphwalker</groupId>
+				<artifactId>graphwalker-maven-plugin</artifactId>
+				<version>${graphwalker.version}</version>
+			</plugin>
         </plugins>
 
     </build>

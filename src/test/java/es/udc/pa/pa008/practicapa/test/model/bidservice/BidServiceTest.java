@@ -2,7 +2,12 @@ package es.udc.pa.pa008.practicapa.test.model.bidservice;
 
 import static es.udc.pa.pa008.practicapa.model.util.GlobalNames.SPRING_CONFIG_FILE;
 import static es.udc.pa.pa008.practicapa.test.util.GlobalNames.SPRING_CONFIG_TEST_FILE;
+import static net.java.quickcheck.generator.PrimitiveGenerators.strings;
+import static net.java.quickcheck.generator.PrimitiveGeneratorsIterables.someDoubles;
 import static org.junit.Assert.*;
+import static org.testng.Assert.assertEquals;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +31,7 @@ import es.udc.pa.pa008.practicapa.model.userservice.UserProfileDetails;
 import es.udc.pa.pa008.practicapa.model.userservice.UserService;
 import es.udc.pojo.modelutil.exceptions.DuplicateInstanceException;
 import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import net.java.quickcheck.Generator;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -273,4 +279,31 @@ public class BidServiceTest {
 
 	}
 	*/
+	
+    @Test(expected = LowBidValueException.class)
+    public void testMakeBidQuickCheck()  throws DuplicateInstanceException, InstanceNotFoundException, IllegalArgumentException, TimeExpiredException{
+    	
+		UserProfile userProfile = userService.registerUser(strings().next(), strings().next(),
+	            new UserProfileDetails(strings().next(), strings().next(), strings().next()));
+		
+		UserProfile userProfile2 = userService.registerUser(strings().next(), strings().next(),
+	            new UserProfileDetails(strings().next(), strings().next(), strings().next()));
+		
+		Category category = new Category("Coches");
+		categoryDao.save(category);
+		
+		Product product = productService.insertAd(userProfile.getUserProfileId(), category.getCategoryId(), 
+				"Audi A4", "Coche en muy buenas condiciones", 240, 30, "envío por trasporte urgente");
+    			
+		
+        for (Double any : someDoubles(0.,1000000.)) {
+        	
+    		bidService.makeBid(userProfile.getUserProfileId(), product.getProductId(), any.doubleValue());
+        	
+        	System.out.println("any: "+any.doubleValue()+" auctionValue: "+product.getAuctionValue());
+    		assertEquals(userProfile.getUserProfileId(), product.getWinner().getUserProfileId());
+
+        }
+
+    }
 }
