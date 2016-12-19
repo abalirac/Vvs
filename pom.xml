@@ -194,12 +194,6 @@
 			<version>0.6</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>6.8</version>
-		</dependency>
 		<dependency>
 		   <groupId>org.graphwalker</groupId>
 		   <artifactId>graphwalker-core</artifactId>
