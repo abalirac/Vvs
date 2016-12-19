@@ -2,7 +2,7 @@ package es.udc.pa.pa008.practicapa.test.model.categoryservice;
 
 import static es.udc.pa.pa008.practicapa.model.util.GlobalNames.SPRING_CONFIG_FILE;
 import static es.udc.pa.pa008.practicapa.test.util.GlobalNames.SPRING_CONFIG_TEST_FILE;
-//import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static net.java.quickcheck.generator.PrimitiveGeneratorsIterables.someIntegers;
 import static net.java.quickcheck.generator.PrimitiveGenerators.strings;
 
@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import static org.testng.Assert.assertEquals;
+//import static org.testng.Assert.assertEquals;
 
 
 import es.udc.pa.pa008.practicapa.model.category.Category;
@@ -51,7 +51,7 @@ public class CategoryServiceTest {
 		assertEquals(category, categorys.get(2));
 	}
 	
-    @Test
+   @Test
     public void testFindCategoriesQuickCheck() {
     	int index=0;
         for (Integer any : someIntegers()) {

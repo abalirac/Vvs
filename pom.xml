@@ -205,11 +205,6 @@
 		   <artifactId>graphwalker-core</artifactId>
 		   <version>3.4.2</version>
 		</dependency>
-			<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>2.46.0</version>
-		</dependency>
     </dependencies>
 
     <build>
@@ -445,11 +440,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-			<plugin>
-				<groupId>org.graphwalker</groupId>
-				<artifactId>graphwalker-maven-plugin</artifactId>
-				<version>${graphwalker.version}</version>
-			</plugin>
         </plugins>
 
     </build>

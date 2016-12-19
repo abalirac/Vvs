@@ -5,9 +5,7 @@ import static es.udc.pa.pa008.practicapa.test.util.GlobalNames.SPRING_CONFIG_TES
 import static net.java.quickcheck.generator.PrimitiveGenerators.strings;
 import static net.java.quickcheck.generator.PrimitiveGeneratorsIterables.someDoubles;
 import static org.junit.Assert.*;
-import static org.testng.Assert.assertEquals;
-
-import java.util.List;
+//import static org.testng.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -280,7 +278,7 @@ public class BidServiceTest {
 	}
 	*/
 	
-    @Test(expected = LowBidValueException.class)
+   @Test(expected = LowBidValueException.class)
     public void testMakeBidQuickCheck()  throws DuplicateInstanceException, InstanceNotFoundException, IllegalArgumentException, TimeExpiredException{
     	
 		UserProfile userProfile = userService.registerUser(strings().next(), strings().next(),
