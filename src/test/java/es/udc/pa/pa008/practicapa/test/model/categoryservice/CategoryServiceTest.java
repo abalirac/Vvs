@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 //import static org.testng.Assert.assertEquals;
 
-
 import es.udc.pa.pa008.practicapa.model.category.Category;
 import es.udc.pa.pa008.practicapa.model.category.CategoryDao;
 
@@ -24,46 +23,48 @@ import es.udc.pa.pa008.practicapa.model.category.CategoryDao;
 @ContextConfiguration(locations = { SPRING_CONFIG_FILE, SPRING_CONFIG_TEST_FILE })
 @Transactional
 public class CategoryServiceTest {
-	
-	@Autowired
-	private CategoryDao categoryDao;
-	
-	@Test
-	public void testFindCategorys() {
-		
-		 /* Add categorys and find categorys. */
-		
-		Category category = new Category("Móviles");
-		categoryDao.save(category);
-		
-		Category category2 = new Category("Altavoces");
-		categoryDao.save(category2);
-		
-		Category category3 = new Category("Motos");
-		categoryDao.save(category3);
-		
-		List<Category> categorys = categoryDao.findCategorys();
-		
-		/* Check data. */
-		assertEquals(3, categorys.size());
-		assertEquals(category2, categorys.get(0));
-		assertEquals(category3, categorys.get(1));
-		assertEquals(category, categorys.get(2));
-	}
-	
-   @Test
+
+    @Autowired
+    private CategoryDao categoryDao;
+
+    @Test
+    public void testFindCategorys() {
+
+        /* Add categorys and find categorys. */
+
+        Category category = new Category("Móviles");
+        categoryDao.save(category);
+
+        Category category2 = new Category("Altavoces");
+        categoryDao.save(category2);
+
+        Category category3 = new Category("Motos");
+        categoryDao.save(category3);
+
+        List<Category> categorys = categoryDao.findCategorys();
+
+        /* Check data. */
+        assertEquals(3, categorys.size());
+        assertEquals(category2, categorys.get(0));
+        assertEquals(category3, categorys.get(1));
+        assertEquals(category, categorys.get(2));
+    }
+
+    @Test
     public void testFindCategoriesQuickCheck() {
-    	int index=0;
+        int index = 0;
         for (Integer any : someIntegers()) {
-        	
-    		Category category = new Category(strings().next());
-    		categoryDao.save(category);
-    		
-    		List<Category> categorys = categoryDao.findCategorys();
-        	//System.out.println("any: "+any.intValue()+" size: "+categorys.size()+"nombre1: "+category.getCategoryName()+" nombre2:"+categorys.get(index).getCategoryName());
-    		assertEquals(index+1, categorys.size());
-    		index++;
-    		
+
+            Category category = new Category(strings().next());
+            categoryDao.save(category);
+
+            List<Category> categorys = categoryDao.findCategorys();
+            // System.out.println("any: "+any.intValue()+" size:
+            // "+categorys.size()+"nombre1: "+category.getCategoryName()+"
+            // nombre2:"+categorys.get(index).getCategoryName());
+            assertEquals(index + 1, categorys.size());
+            index++;
+
         }
 
     }

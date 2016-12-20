@@ -14,42 +14,41 @@ import es.udc.pa.pa008.practicapa.web.services.AuthenticationPolicyType;
 
 @AuthenticationPolicy(AuthenticationPolicyType.ALL_USERS)
 public class ViewProducts {
-	
-	@Property 
-	private String category;
-	
-	@Property 
-	private Long categoryId;
-	
-	@Property
-	private String keywords;
-	
-	@Inject
-	private ProductService productService;
-	
-	@Inject
-	private CategoryService categoryService;
-	
-	@InjectPage
-	private AllProducts allProducts;
-	
-	public String getCategorys(){
-		
-		List<Category> categorys = categoryService.findCategorys();
-		String result = "";
-		for (Category category:categorys){
-			result += category.getCategoryId() + "=" 
-					+ category.getCategoryName() + ",";
-		}
-		return result;
-	}
-	
-	Object onSuccess() {
-		
-		allProducts.setKeywords(keywords);
-		if (category != null)
-			this.categoryId = Long.valueOf(category);
-		allProducts.setCategoryId(this.categoryId);
-		return allProducts;	
-	}
+
+    @Property
+    private String category;
+
+    @Property
+    private Long categoryId;
+
+    @Property
+    private String keywords;
+
+    @Inject
+    private ProductService productService;
+
+    @Inject
+    private CategoryService categoryService;
+
+    @InjectPage
+    private AllProducts allProducts;
+
+    public String getCategorys() {
+
+        List<Category> categorys = categoryService.findCategorys();
+        String result = "";
+        for (Category category : categorys) {
+            result += category.getCategoryId() + "=" + category.getCategoryName() + ",";
+        }
+        return result;
+    }
+
+    Object onSuccess() {
+
+        allProducts.setKeywords(keywords);
+        if (category != null)
+            this.categoryId = Long.valueOf(category);
+        allProducts.setCategoryId(this.categoryId);
+        return allProducts;
+    }
 }

@@ -19,92 +19,92 @@ import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
 
 @AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
 public class MakeBid {
-	
-	private Product product;
-	
-	@Property
-	private double minValue;
-	
-	@Property
-	private double bidValue;
-	
-	@Inject
-	private BidService bidService;
-	
-	@Inject
-	private ProductService productService;
-		
-    @SessionState(create=false)
+
+    private Product product;
+
+    @Property
+    private double minValue;
+
+    @Property
+    private double bidValue;
+
+    @Inject
+    private BidService bidService;
+
+    @Inject
+    private ProductService productService;
+
+    @SessionState(create = false)
     private UserSession userSession;
-	
-	@InjectPage
-	private BidMade bidMade;
-	
-	@Component
-	private Form makeBidForm;
-	
-	@Inject
-	private Messages messages;
-	
-	public Product getProduct() {
-		return product;
-	}
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-	
-	void onActivate(Long productId) throws IllegalArgumentException, TimeExpiredException, InstanceNotFoundException{
+    @InjectPage
+    private BidMade bidMade;
 
-			this.product = productService.findProduct(productId);
-			
-			try {
-				bidService.findProductLastBid(productId);
-				this.minValue = product.getAuctionValue() + 0.5; //+ 0.5 para puja minima
-				
-			}catch(InstanceNotFoundException e){
+    @Component
+    private Form makeBidForm;
 
-				this.minValue = product.getStartingPrice();
-				
-			}
-			
-		
-	}
-	
-	Long onPassivate(){
-		return product.getProductId();
-	}
-	
-	void onValidateFromMakeBidForm() {
+    @Inject
+    private Messages messages;
 
-		if (!makeBidForm.isValid()) {
-			return;
-		}
+    public Product getProduct() {
+        return product;
+    }
 
-		try {
-			
-			bidService.makeBid(userSession.getUserProfileId(), this.product.getProductId(), bidValue);
-			
-		}catch(TimeExpiredException e){
-			
-			makeBidForm.recordError(messages.format("error-BidTimeExpired", bidValue));
-			
-		}catch(InstanceNotFoundException e){
-			
-			makeBidForm.recordError(messages.format("error-productNotFound", bidValue));
-			
-		}catch(IllegalArgumentException e){
-			
-			makeBidForm.recordError(messages.format("error-lowBidValue", bidValue));
-			
-		}
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
-	}
-	
-	Object onSuccess(){
-		bidMade.setProductId(product.getProductId());
-		return bidMade;
-		
-	}
-	
+    void onActivate(Long productId) throws IllegalArgumentException, TimeExpiredException, InstanceNotFoundException {
+
+        this.product = productService.findProduct(productId);
+
+        try {
+            bidService.findProductLastBid(productId);
+            this.minValue = product.getAuctionValue() + 0.5; // + 0.5 para puja
+                                                             // minima
+
+        } catch (InstanceNotFoundException e) {
+
+            this.minValue = product.getStartingPrice();
+
+        }
+
+    }
+
+    Long onPassivate() {
+        return product.getProductId();
+    }
+
+    void onValidateFromMakeBidForm() {
+
+        if (!makeBidForm.isValid()) {
+            return;
+        }
+
+        try {
+
+            bidService.makeBid(userSession.getUserProfileId(), this.product.getProductId(), bidValue);
+
+        } catch (TimeExpiredException e) {
+
+            makeBidForm.recordError(messages.format("error-BidTimeExpired", bidValue));
+
+        } catch (InstanceNotFoundException e) {
+
+            makeBidForm.recordError(messages.format("error-productNotFound", bidValue));
+
+        } catch (IllegalArgumentException e) {
+
+            makeBidForm.recordError(messages.format("error-lowBidValue", bidValue));
+
+        }
+
+    }
+
+    Object onSuccess() {
+        bidMade.setProductId(product.getProductId());
+        return bidMade;
+
+    }
+
 }

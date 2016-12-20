@@ -27,71 +27,70 @@ import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
 
 @AuthenticationPolicy(AuthenticationPolicyType.ALL_USERS)
 public class ProductDetails {
-	
-	private Long productId;
-	
-	@SessionState(create=false)
+
+    private Long productId;
+
+    @SessionState(create = false)
     private UserSession userSession;
-	
-	@Property
-	private Product product;
-	
-	@Property
-	private Bid bid;
-	
-	@Inject
-	private ProductService productService;
-	
-	@Inject
-	private BidService bidService;
-	
-	@Inject
-	private Locale locale;
-	
-	@InjectPage
-	private MakeBid makeBid;
-	
+
+    @Property
+    private Product product;
+
+    @Property
+    private Bid bid;
+
+    @Inject
+    private ProductService productService;
+
+    @Inject
+    private BidService bidService;
+
+    @Inject
+    private Locale locale;
+
+    @InjectPage
+    private MakeBid makeBid;
+
     @Inject
     private Request request;
-    
+
     @Inject
     PageRenderLinkSource linkSource;
-    
+
     @InjectComponent
     private Zone ajaxAuctionValue;
-    
-    Object onActionFromGotoBid(long productId){
-    	
-    	if(userSession == null)
-    		return linkSource.createPageRenderLinkWithContext(Login.class,productId);
-    	else 
-    		return linkSource.createPageRenderLinkWithContext(MakeBid.class,productId);
-    	
-    }
-	
-    Object onActionFromRefreshZone() {
-    	
-        return request.isXHR() ? ajaxAuctionValue.getBody() : null;
-    
+
+    Object onActionFromGotoBid(long productId) {
+
+        if (userSession == null)
+            return linkSource.createPageRenderLinkWithContext(Login.class, productId);
+        else
+            return linkSource.createPageRenderLinkWithContext(MakeBid.class, productId);
+
     }
 
-	
-	public Format getFormat() {
-		return NumberFormat.getInstance(locale);
-	}
-	
-	void onActivate(Long productId) {
-				
-		this.productId = productId;
-		try {
-			product = productService.findProduct(productId);
-			bid = bidService.findProductLastBid(productId);
-		} catch (InstanceNotFoundException e) {
-		}	
-	}
-	
-	Long onPassivate() {
-		return productId;
-	}
+    Object onActionFromRefreshZone() {
+
+        return request.isXHR() ? ajaxAuctionValue.getBody() : null;
+
+    }
+
+    public Format getFormat() {
+        return NumberFormat.getInstance(locale);
+    }
+
+    void onActivate(Long productId) {
+
+        this.productId = productId;
+        try {
+            product = productService.findProduct(productId);
+            bid = bidService.findProductLastBid(productId);
+        } catch (InstanceNotFoundException e) {
+        }
+    }
+
+    Long onPassivate() {
+        return productId;
+    }
 
 }

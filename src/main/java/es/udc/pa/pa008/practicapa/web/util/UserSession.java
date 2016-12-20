@@ -1,25 +1,24 @@
 package es.udc.pa.pa008.practicapa.web.util;
 
-
 public class UserSession {
 
-	private Long userProfileId;
-	private String firstName;
+    private Long userProfileId;
+    private String firstName;
 
-	public Long getUserProfileId() {
-		return userProfileId;
-	}
+    public Long getUserProfileId() {
+        return userProfileId;
+    }
 
-	public void setUserProfileId(Long userProfileId) {
-		this.userProfileId = userProfileId;
-	}
+    public void setUserProfileId(Long userProfileId) {
+        this.userProfileId = userProfileId;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
 }

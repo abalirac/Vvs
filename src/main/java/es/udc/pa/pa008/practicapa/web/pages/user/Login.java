@@ -23,8 +23,8 @@ import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
 @AuthenticationPolicy(AuthenticationPolicyType.NON_AUTHENTICATED_USERS)
 public class Login {
 
-	private Long productId;
-	
+    private Long productId;
+
     @Property
     private String loginName;
 
@@ -34,7 +34,7 @@ public class Login {
     @Property
     private boolean rememberMyPassword;
 
-    @SessionState(create=false)
+    @SessionState(create = false)
     private UserSession userSession;
 
     @Inject
@@ -48,20 +48,20 @@ public class Login {
 
     @Inject
     private UserService userService;
-    
+
     @Inject
     PageRenderLinkSource linkSource;
 
     private UserProfile userProfile = null;
-    
-    void onActivate(Long productId){
-    	if(productId != null)
-    	this.productId = productId;
+
+    void onActivate(Long productId) {
+        if (productId != null)
+            this.productId = productId;
     }
 
-	Long onPassivate(){
-		return this.productId;
-	}
+    Long onPassivate() {
+        return this.productId;
+    }
 
     void onValidateFromLoginForm() {
 
@@ -81,17 +81,17 @@ public class Login {
 
     Object onSuccess() {
 
-    	userSession = new UserSession();
+        userSession = new UserSession();
         userSession.setUserProfileId(userProfile.getUserProfileId());
         userSession.setFirstName(userProfile.getFirstName());
 
         if (rememberMyPassword) {
-            CookiesManager.leaveCookies(cookies, loginName, userProfile
-                    .getEncryptedPassword());
+            CookiesManager.leaveCookies(cookies, loginName, userProfile.getEncryptedPassword());
         }
-        if(productId != null)
-        	return linkSource.createPageRenderLinkWithContext(MakeBid.class,productId);
-        else return Index.class;
+        if (productId != null)
+            return linkSource.createPageRenderLinkWithContext(MakeBid.class, productId);
+        else
+            return Index.class;
 
     }
 

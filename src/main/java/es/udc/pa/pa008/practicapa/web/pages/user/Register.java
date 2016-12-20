@@ -39,7 +39,7 @@ public class Register {
     @Property
     private String email;
 
-    @SessionState(create=false)
+    @SessionState(create = false)
     private UserSession userSession;
 
     @Inject
@@ -66,17 +66,15 @@ public class Register {
         }
 
         if (!password.equals(retypePassword)) {
-            registrationForm.recordError(passwordField, messages
-                    .get("error-passwordsDontMatch"));
+            registrationForm.recordError(passwordField, messages.get("error-passwordsDontMatch"));
         } else {
 
             try {
                 UserProfile userProfile = userService.registerUser(loginName, password,
-                    new UserProfileDetails(firstName, lastName, email));
+                        new UserProfileDetails(firstName, lastName, email));
                 userProfileId = userProfile.getUserProfileId();
             } catch (DuplicateInstanceException e) {
-                registrationForm.recordError(loginNameField, messages
-                        .get("error-loginNameAlreadyExists"));
+                registrationForm.recordError(loginNameField, messages.get("error-loginNameAlreadyExists"));
             }
 
         }

@@ -25,7 +25,7 @@ public class UpdateProfile {
     @Property
     private String email;
 
-    @SessionState(create=false)
+    @SessionState(create = false)
     private UserSession userSession;
 
     @Inject
@@ -35,8 +35,7 @@ public class UpdateProfile {
 
         UserProfile userProfile;
 
-        userProfile = userService.findUserProfile(userSession
-                .getUserProfileId());
+        userProfile = userService.findUserProfile(userSession.getUserProfileId());
         firstName = userProfile.getFirstName();
         lastName = userProfile.getLastName();
         email = userProfile.getEmail();
@@ -45,9 +44,8 @@ public class UpdateProfile {
 
     Object onSuccess() throws InstanceNotFoundException {
 
-        userService.updateUserProfileDetails(
-                userSession.getUserProfileId(), new UserProfileDetails(
-                        firstName, lastName, email));
+        userService.updateUserProfileDetails(userSession.getUserProfileId(),
+                new UserProfileDetails(firstName, lastName, email));
         userSession.setFirstName(firstName);
         return Index.class;
 

@@ -22,70 +22,68 @@ import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
 @AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
 public class InsertAd {
 
-	@SessionState(create=false)
+    @SessionState(create = false)
     private UserSession userSession;
-	
-	@Property 
-	private String category;
-	
-	@Property 
-	private Long categoryId;
-	
-	@Property
-	private String productName;
-	
-	@Property
-	private String description;
-	
-	@Property
-	private int duration;
-	
-	@Property
-	private double startingPrice;
-	
-	@Property
-	private String shippingInfo;
-	
-	@Inject
-	private ProductService productService;
-	
-	@Inject
-	private CategoryService categoryService;
-	
-	@InjectPage
-	private AdInserted adInserted;
-	
-	@Component
-	private Form insertAdForm;
-	
-	@Component(id="productName")
-	private TextField productNameTextField;
-	
-	@Inject
-	private Messages messages;
-	
-	public String getCategorys(){
-		
-		List<Category> categorys = categoryService.findCategorys();
-		String result = "";
-		for (Category category:categorys){
-			result += category.getCategoryId() + "=" 
-					+ category.getCategoryName() + ",";
-		}
-		return result;
-	}
-	
-	Object onSuccess() {
-		
-		try {
-			if (category != null)
-				this.categoryId = Long.valueOf(category);
-			productService.insertAd(userSession.getUserProfileId(), 
-				this.categoryId, productName, description, duration, startingPrice, 
-				shippingInfo);
-		} catch (InstanceNotFoundException e) {
-		}
-		
-		return adInserted;
-	}
+
+    @Property
+    private String category;
+
+    @Property
+    private Long categoryId;
+
+    @Property
+    private String productName;
+
+    @Property
+    private String description;
+
+    @Property
+    private int duration;
+
+    @Property
+    private double startingPrice;
+
+    @Property
+    private String shippingInfo;
+
+    @Inject
+    private ProductService productService;
+
+    @Inject
+    private CategoryService categoryService;
+
+    @InjectPage
+    private AdInserted adInserted;
+
+    @Component
+    private Form insertAdForm;
+
+    @Component(id = "productName")
+    private TextField productNameTextField;
+
+    @Inject
+    private Messages messages;
+
+    public String getCategorys() {
+
+        List<Category> categorys = categoryService.findCategorys();
+        String result = "";
+        for (Category category : categorys) {
+            result += category.getCategoryId() + "=" + category.getCategoryName() + ",";
+        }
+        return result;
+    }
+
+    Object onSuccess() {
+
+        try {
+            if (category != null)
+                this.categoryId = Long.valueOf(category);
+            productService.insertAd(userSession.getUserProfileId(), this.categoryId, productName, description, duration,
+                    startingPrice, shippingInfo);
+        } catch (InstanceNotFoundException e) {
+        }
+
+        return adInserted;
+    }
 }

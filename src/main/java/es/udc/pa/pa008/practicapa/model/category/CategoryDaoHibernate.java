@@ -9,12 +9,10 @@ import es.udc.pojo.modelutil.dao.GenericDaoHibernate;
 @Repository("categoryDao")
 public class CategoryDaoHibernate extends GenericDaoHibernate<Category, Long> implements CategoryDao {
 
-	@SuppressWarnings("unchecked")
-	public List<Category> findCategorys() {
-		
-		return getSession().createQuery(
-				"SELECT u FROM Category u")
-				.list();
-	}
+    @SuppressWarnings("unchecked")
+    public List<Category> findCategorys() {
+
+        return getSession().createQuery("SELECT u FROM Category u").list();
+    }
 
 }

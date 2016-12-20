@@ -14,5 +14,4 @@ public class IncorrectPasswordException extends Exception {
         return loginName;
     }
 
-
 }

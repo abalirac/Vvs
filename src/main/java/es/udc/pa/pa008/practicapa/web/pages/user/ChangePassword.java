@@ -29,7 +29,7 @@ public class ChangePassword {
     @Property
     private String retypeNewPassword;
 
-    @SessionState(create=false)
+    @SessionState(create = false)
     private UserSession userSession;
 
     @Component
@@ -51,16 +51,13 @@ public class ChangePassword {
         }
 
         if (!newPassword.equals(retypeNewPassword)) {
-            changePasswordForm
-                    .recordError(messages.get("error-passwordsDontMatch"));
+            changePasswordForm.recordError(messages.get("error-passwordsDontMatch"));
         } else {
 
             try {
-                userService.changePassword(userSession.getUserProfileId(),
-                        oldPassword, newPassword);
+                userService.changePassword(userSession.getUserProfileId(), oldPassword, newPassword);
             } catch (IncorrectPasswordException e) {
-                changePasswordForm.recordError(messages
-                        .get("error-invalidPassword"));
+                changePasswordForm.recordError(messages.get("error-invalidPassword"));
             }
 
         }

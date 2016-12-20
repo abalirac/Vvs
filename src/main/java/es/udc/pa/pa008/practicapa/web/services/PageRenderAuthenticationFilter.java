@@ -16,8 +16,7 @@ public class PageRenderAuthenticationFilter implements PageRenderRequestFilter {
     private ComponentSource componentSource;
     private MetaDataLocator locator;
 
-    public PageRenderAuthenticationFilter(
-            ApplicationStateManager applicationStateManager,
+    public PageRenderAuthenticationFilter(ApplicationStateManager applicationStateManager,
             ComponentSource componentSource, MetaDataLocator locator) {
 
         this.applicationStateManager = applicationStateManager;
@@ -26,16 +25,13 @@ public class PageRenderAuthenticationFilter implements PageRenderRequestFilter {
 
     }
 
-    public void handle(PageRenderRequestParameters parameters,
-            PageRenderRequestHandler handler) throws IOException {
+    public void handle(PageRenderRequestParameters parameters, PageRenderRequestHandler handler) throws IOException {
 
         PageRenderRequestParameters handlerParameters = parameters;
-        String redirectPage = AuthenticationValidator.checkForPage(parameters
-                .getLogicalPageName(), applicationStateManager,
-                componentSource, locator);
+        String redirectPage = AuthenticationValidator.checkForPage(parameters.getLogicalPageName(),
+                applicationStateManager, componentSource, locator);
         if (redirectPage != null) {
-            handlerParameters = new PageRenderRequestParameters(redirectPage,
-                    new EmptyEventContext(), false);
+            handlerParameters = new PageRenderRequestParameters(redirectPage, new EmptyEventContext(), false);
         }
 
         handler.handle(handlerParameters);

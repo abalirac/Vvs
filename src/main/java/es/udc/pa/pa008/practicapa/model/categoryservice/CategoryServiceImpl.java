@@ -13,13 +13,13 @@ import es.udc.pa.pa008.practicapa.model.category.CategoryDao;
 @Transactional
 public class CategoryServiceImpl implements CategoryService {
 
-	@Autowired
+    @Autowired
     private CategoryDao categoryDao;
-	
-	@Transactional(readOnly = true)
-	public List<Category> findCategorys() {
-		
-		return categoryDao.findCategorys();
-	}
+
+    @Transactional(readOnly = true)
+    public List<Category> findCategorys() {
+
+        return categoryDao.findCategorys();
+    }
 
 }
