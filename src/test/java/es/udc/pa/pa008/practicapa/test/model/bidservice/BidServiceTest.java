@@ -253,6 +253,7 @@ public class BidServiceTest {
         assertEquals(product.getWinner().getUserProfileId(), userProfile.getUserProfileId());
     }
     
+        // PR-UN-30
       @Test public void testMakeBidMinValue() throws
       DuplicateInstanceException, InstanceNotFoundException,
       TimeExpiredException{
@@ -299,6 +300,7 @@ public class BidServiceTest {
       }
      
 
+    // PR-UN-31
     @Test(expected = LowBidValueException.class)
     public void testMakeBidQuickCheck() throws DuplicateInstanceException, InstanceNotFoundException,
             IllegalArgumentException, TimeExpiredException {
