@@ -243,51 +243,50 @@ public class BidServiceTest {
 
         assertEquals(product.getWinner().getUserProfileId(), userProfile.getUserProfileId());
     }
-    /*
-     * @Test public void testMakeBidMinValue() throws
-     * DuplicateInstanceException, InstanceNotFoundException,
-     * TimeExpiredException{
-     * 
-     * UserProfile userProfile = userService.registerUser("user",
-     * "userPassword", new UserProfileDetails("name", "lastName",
-     * "user@udc.es"));
-     * 
-     * UserProfile userProfile2 = userService.registerUser("user2",
-     * "userPassword", new UserProfileDetails("name2", "lastName2",
-     * "user2@udc.es"));
-     * 
-     * Category category = new Category("Coches"); categoryDao.save(category);
-     * 
-     * Product product = productService.insertAd(userProfile.getUserProfileId(),
-     * category.getCategoryId(), "Audi A4", "Coche en muy buenas condiciones",
-     * 240, 10, "envío por trasporte urgente");
-     * 
-     * bidService.makeBid(userProfile.getUserProfileId(),
-     * product.getProductId(), 10);
-     * 
-     * bidService.makeBid(userProfile2.getUserProfileId(),
-     * product.getProductId(), 11);
-     * 
-     * bidService.makeBid(userProfile.getUserProfileId(),
-     * product.getProductId(), 12);
-     * 
-     * bidService.makeBid(userProfile.getUserProfileId(),
-     * product.getProductId(), 14);
-     * 
-     * bidService.makeBid(userProfile2.getUserProfileId(),
-     * product.getProductId(), 13);
-     * 
-     * bidService.makeBid(userProfile2.getUserProfileId(),
-     * product.getProductId(), 15);
-     * 
-     * bidService.makeBid(userProfile.getUserProfileId(),
-     * product.getProductId(), 15);
-     * 
-     * assertEquals(Double.doubleToLongBits(product.getAuctionValue()),
-     * Double.doubleToLongBits(15));
-     * 
-     * }
-     */
+    
+      @Test public void testMakeBidMinValue() throws
+      DuplicateInstanceException, InstanceNotFoundException,
+      TimeExpiredException{
+      
+      UserProfile userProfile = userService.registerUser("user",
+      "userPassword", new UserProfileDetails("name", "lastName",
+      "user@udc.es"));
+      
+      UserProfile userProfile2 = userService.registerUser("user2",
+      "userPassword", new UserProfileDetails("name2", "lastName2",
+      "user2@udc.es"));
+      
+      Category category = new Category("Coches"); categoryDao.save(category);
+     
+      Product product = productService.insertAd(userProfile.getUserProfileId(),
+      category.getCategoryId(), "Audi A4", "Coche en muy buenas condiciones",
+      240, 10, "envío por trasporte urgente");
+     
+      bidService.makeBid(userProfile.getUserProfileId(),
+      product.getProductId(), 10);
+      
+      bidService.makeBid(userProfile2.getUserProfileId(),
+      product.getProductId(), 11);
+      
+      bidService.makeBid(userProfile.getUserProfileId(),
+      product.getProductId(), 12);
+      
+      bidService.makeBid(userProfile.getUserProfileId(),
+      product.getProductId(), 14);
+      
+      bidService.makeBid(userProfile2.getUserProfileId(),
+      product.getProductId(), 13);
+      
+      bidService.makeBid(userProfile2.getUserProfileId(),
+      product.getProductId(), 15);
+      
+      bidService.makeBid(userProfile.getUserProfileId(),
+      product.getProductId(), 15);
+      
+      assertEquals(product.getAuctionValue(),15, 0.001);
+      
+      }
+     
 
     @Test(expected = LowBidValueException.class)
     public void testMakeBidQuickCheck() throws DuplicateInstanceException, InstanceNotFoundException,
