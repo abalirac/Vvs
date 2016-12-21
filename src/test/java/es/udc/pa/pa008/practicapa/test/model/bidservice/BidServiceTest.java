@@ -290,7 +290,6 @@ public class BidServiceTest {
       }
      
 
-    @Test(expected = LowBidValueException.class)
     public void testMakeBidQuickCheck() throws DuplicateInstanceException, InstanceNotFoundException,
             IllegalArgumentException, TimeExpiredException {
 
