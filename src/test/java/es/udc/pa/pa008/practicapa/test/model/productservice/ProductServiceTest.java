@@ -38,6 +38,7 @@ public class ProductServiceTest {
     @Autowired
     private CategoryDao categoryDao;
 
+    //PR-UN-14
     @Test
     public void testInsertAdAndFindProduct() throws DuplicateInstanceException, InstanceNotFoundException {
 
@@ -60,6 +61,7 @@ public class ProductServiceTest {
 
     }
 
+    //PR-UN-15
     @Test(expected = InstanceNotFoundException.class)
     public void testFindNonExistentProduct() throws InstanceNotFoundException {
 
@@ -67,6 +69,7 @@ public class ProductServiceTest {
 
     }
 
+    //PR-UN-16
     @Test // keywords=0, category=0
     public void testFindByKeywords1() throws DuplicateInstanceException, InstanceNotFoundException {
 
@@ -108,6 +111,7 @@ public class ProductServiceTest {
         assertEquals(false, productsFound.isExistMoreProducts());
     }
 
+    //PR-UN-17
     @Test // keywords=1 (desordenadas y con mayúsculas), category=0
     public void testFindByKeywords2() throws DuplicateInstanceException, InstanceNotFoundException {
 
@@ -148,6 +152,7 @@ public class ProductServiceTest {
         assertEquals(false, productsFound.isExistMoreProducts());
     }
 
+    //PR-UN-18
     @Test // keywords=0, category=1
     public void testFindByKeywords3() throws DuplicateInstanceException, InstanceNotFoundException {
 
@@ -188,6 +193,7 @@ public class ProductServiceTest {
         assertEquals(false, productsFound.isExistMoreProducts());
     }
 
+    //PR-UN-19
     @Test // keywords=1, category=1
     public void testFindByKeywords4() throws DuplicateInstanceException, InstanceNotFoundException {
 
@@ -227,6 +233,7 @@ public class ProductServiceTest {
         assertEquals(false, productsFound.isExistMoreProducts());
     }
 
+    //PR-UN-20
     @Test
     public void testFindProductsByUser() throws DuplicateInstanceException, InstanceNotFoundException {
 

@@ -115,3 +115,14 @@ PR-UN-29:
 				superior a la apuesta vigente, lo suficientemente alta como para que en la oferta reflejada salga
 				que la subió el mínimo a la que estaba pero cuando alguien la intente mejorar, automáticamente se
 pujará hasta el valor máximo introducido.
+
+
+PR-UN-30:
+
+*Unidad: Bidservice
+*Función/método: makeBid
+*Motivación: Comprobamos hacer apuestas de todo tipo, mayores menores o igual a la oferta máxima y con varios usuarios.
+*Entradas: 2 usuarios, 1 categoría, 1 producto y 7 ofertas
+*Salida esperada: La apuesta ganadora es la más alta. 
+	-
+*Inicialización del contexto:Inicialmente la base de datos está vacía. 

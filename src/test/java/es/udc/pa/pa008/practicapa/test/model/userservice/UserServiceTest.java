@@ -28,6 +28,7 @@ public class UserServiceTest {
     @Autowired
     private UserService userService;
 
+    //PR-UN-01
     @Test
     public void testRegisterUserAndFindUserProfile() throws DuplicateInstanceException, InstanceNotFoundException {
 
@@ -42,6 +43,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-02
     @Test(expected = DuplicateInstanceException.class)
     public void testRegisterDuplicatedUser() throws DuplicateInstanceException, InstanceNotFoundException {
 
@@ -55,6 +57,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-03
     @Test
     public void testLoginClearPassword() throws IncorrectPasswordException, InstanceNotFoundException {
 
@@ -67,6 +70,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-04
     @Test
     public void testLoginEncryptedPassword() throws IncorrectPasswordException, InstanceNotFoundException {
 
@@ -79,6 +83,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-05
     @Test(expected = IncorrectPasswordException.class)
     public void testLoginIncorrectPasword() throws IncorrectPasswordException, InstanceNotFoundException {
 
@@ -89,6 +94,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-06
     @Test(expected = InstanceNotFoundException.class)
     public void testLoginWithNonExistentUser() throws IncorrectPasswordException, InstanceNotFoundException {
 
@@ -96,6 +102,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-07
     @Test(expected = InstanceNotFoundException.class)
     public void testFindNonExistentUser() throws InstanceNotFoundException {
 
@@ -103,6 +110,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-08
     @Test
     public void testUpdate() throws InstanceNotFoundException, IncorrectPasswordException {
 
@@ -125,6 +133,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-09
     @Test(expected = InstanceNotFoundException.class)
     public void testUpdateWithNonExistentUser() throws InstanceNotFoundException {
 
@@ -133,6 +142,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-10
     @Test
     public void testChangePassword() throws InstanceNotFoundException, IncorrectPasswordException {
 
@@ -148,6 +158,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-11
     @Test(expected = IncorrectPasswordException.class)
     public void testChangePasswordWithIncorrectPassword() throws InstanceNotFoundException, IncorrectPasswordException {
 
@@ -158,6 +169,7 @@ public class UserServiceTest {
 
     }
 
+    //PR-UN-12
     @Test(expected = InstanceNotFoundException.class)
     public void testChangePasswordWithNonExistentUser() throws InstanceNotFoundException, IncorrectPasswordException {
 

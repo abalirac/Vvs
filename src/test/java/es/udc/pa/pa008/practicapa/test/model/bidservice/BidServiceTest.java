@@ -50,7 +50,8 @@ public class BidServiceTest {
 
     @Autowired
     private BidDao bidDao;
-
+     
+    // PR-UN-21
     @Test
     public void testMakeBidFirstBid() throws DuplicateInstanceException, InstanceNotFoundException, TimeExpiredException {
 
@@ -72,6 +73,7 @@ public class BidServiceTest {
         assertEquals(bid, bidResult);
     }
 
+     // PR-UN-22
     @Test(expected = LowBidValueException.class)
     public void testMakeBidUnderInitialValue()
             throws DuplicateInstanceException, InstanceNotFoundException, TimeExpiredException {
@@ -88,6 +90,7 @@ public class BidServiceTest {
         bidService.makeBid(userProfile.getUserProfileId(), product.getProductId(), 29);
     }
 
+     // PR-UN-23
     @Test
     public void testMakeBidHigher() throws DuplicateInstanceException, InstanceNotFoundException, TimeExpiredException {
 
@@ -114,6 +117,7 @@ public class BidServiceTest {
         assertEquals(Double.doubleToLongBits(product.getAuctionValue()), Double.doubleToLongBits(30.5));
     }
 
+     // PR-UN-24
     @Test
     public void testMakeBidLower() throws DuplicateInstanceException, InstanceNotFoundException, TimeExpiredException {
 
@@ -140,6 +144,7 @@ public class BidServiceTest {
         assertEquals(Double.doubleToLongBits(product.getAuctionValue()), Double.doubleToLongBits(34.5));
     }
 
+     // PR-UN-25
     @Test(expected = LowBidValueException.class)
     public void testMakeBidUnderAuctionValue()
             throws DuplicateInstanceException, InstanceNotFoundException, TimeExpiredException {
@@ -161,6 +166,7 @@ public class BidServiceTest {
         bidService.makeBid(userProfile2.getUserProfileId(), product.getProductId(), 29);
     }
 
+     // PR-UN-26
     @Test(expected = InstanceNotFoundException.class)
     public void testFindNonExistentBid() throws InstanceNotFoundException {
 
@@ -168,6 +174,7 @@ public class BidServiceTest {
 
     }
 
+     // PR-UN-27
     @Test(expected = TimeExpiredException.class)
     public void testmakeBidTimeExpired()
             throws InstanceNotFoundException, DuplicateInstanceException, TimeExpiredException {
@@ -185,6 +192,7 @@ public class BidServiceTest {
 
     }
 
+     // PR-UN-28
     @Test
     public void testFindBidsByUser()
             throws DuplicateInstanceException, InstanceNotFoundException, TimeExpiredException {
@@ -217,6 +225,7 @@ public class BidServiceTest {
 
     }
 
+     // PR-UN-29
     @Test
     public void testMakeBidOtherUser() throws DuplicateInstanceException, InstanceNotFoundException,
             IllegalArgumentException, TimeExpiredException {
@@ -244,6 +253,7 @@ public class BidServiceTest {
         assertEquals(product.getWinner().getUserProfileId(), userProfile.getUserProfileId());
     }
     
+        // PR-UN-30
       @Test public void testMakeBidMinValue() throws
       DuplicateInstanceException, InstanceNotFoundException,
       TimeExpiredException{
@@ -290,6 +300,7 @@ public class BidServiceTest {
       }
      
 
+    // PR-UN-31
     public void testMakeBidQuickCheck() throws DuplicateInstanceException, InstanceNotFoundException,
             IllegalArgumentException, TimeExpiredException {
 
