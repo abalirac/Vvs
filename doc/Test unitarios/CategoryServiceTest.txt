@@ -12,3 +12,14 @@ PR-UN-13:
 	-
 *Inicialización del contexto:Se introducen 3 categorias y se hace una búsqueda de categorías
 para comprobar que salen todas las categorias.
+
+
+PR-UN-32:
+
+*Unidad: CategotyService
+*Función/método: findCategorys
+*Motivación: Comprobar que salen todas las categorías que hay.
+*Entradas:  categorias en número aleatorio
+*Salida esperada: Hay tantas categorías como categoías creadas. 
+	-
+*Inicialización del contexto: Inicialmente la base de datos está vacía.

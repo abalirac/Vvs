@@ -50,7 +50,7 @@ public class CategoryServiceTest {
         assertEquals(category3, categorys.get(1));
         assertEquals(category, categorys.get(2));
     }
-
+    //PR-UN-32
     @Test
     public void testFindCategoriesQuickCheck() {
         int index = 0;
