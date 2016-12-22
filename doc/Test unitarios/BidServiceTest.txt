@@ -126,3 +126,17 @@ PR-UN-30:
 *Salida esperada: La apuesta ganadora es la más alta. 
 	-
 *Inicialización del contexto:Inicialmente la base de datos está vacía. 
+
+
+PR-UN-31:
+
+*Unidad: Bidservice
+*Función/método: makeBid
+*Motivación: Comprobar que funciona metiendo aleatoriedad.
+*Entradas: 2 usuarios, 1 categoría, 1 producto y un bucle de apuestas.
+*Salida esperada: . 
+	-
+*Inicialización del contexto:Inicialmente la base de datos está vacía. Las apuestas automáticas funcionan cuando se da un valor 
+				superior a la apuesta vigente, lo suficientemente alta como para que en la oferta reflejada salga
+				que la subió el mínimo a la que estaba pero cuando alguien la intente mejorar, automáticamente se
+pujará hasta el valor máximo introducido.
